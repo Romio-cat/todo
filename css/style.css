@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
+body, input, button {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #edf0f1;
+  --placeholder: #e4e4e4;
+  --btnColor: #8e8e8e;
+  --btnHover: #545b62;
+}
+
+.todo {
+  max-width: 1200px;
+  margin: 20px auto 0;
+}
+
+
+/* header */
+
+header {
+  position: relative;
+  padding: 10px;
+  background-color: #4a4949;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.75);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.75);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.75);
+}
+
+header form {
+  display: flex;
+}
+
+header form .input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 10px;
+  padding-bottom: 1px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+header form .input-wrapper .input-field {
+  width: 100%;
+  height: 36px;
+  padding: 10px;
+  font-size: 22px;
+  color: white;
+  background-color: transparent;
+  letter-spacing: 0.5px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--placeholder);
+  user-select: none;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--placeholder);
+  -webkit-user-select: none;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: var(--placeholder);
+  -ms-user-select: none;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: var(--placeholder);
+  -moz-user-select: none;
+}
+
+header form .input-wrapper .border {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 1px;
+  width: 0;
+  visibility: hidden;
+  background-color: var(--placeholder);
+  transition: all 0.2s ease;
+}
+
+header form .input-wrapper .input-field:focus + .border {
+  visibility: visible;
+  width: 100%;
+  left: 0;
+}
+
+header form .add-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  transition: background .2s ease;
+}
+
+header form .add-btn:hover {
+  background-color: #0062cc;
+}
+
+header form .add-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+header form .add-btn svg .fill {
+  fill: white;
+}
+
+
+/* section */
+
+section {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.75);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.75);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.75);
+}
+
+ul.list {
+  padding: 0;
+}
+
+ul.list li.item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  min-height: 40px;
+  background-color: white;
+  list-style: none;
+  border-bottom: 1px solid var(--btnColor);
+  transition: all .2s ease;
+}
+
+ul.list li.item.completed {
+  background-color: #efefef;
+}
+
+ul.list li.item:hover {
+  background-color: #fdf8f8;
+}
+
+ul.list li.item .item-text {
+  flex-grow: 1;
+  margin-right: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+ul.list li.item.completed .item-text {
+  text-decoration: line-through;
+  color: #949494;
+  font-weight: 400;
+}
+
+ul.list li.item svg {
+  width: 20px;
+  height: 20px;
+}
+
+ul.list li.item .btn {
+  position: relative;
+  padding: 1px;
+  margin-right: 20px;
+}
+
+ul.list li.item .btn:last-child {
+  margin-right: 0;
+}
+
+ul.list li.item .btn:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 20px;
+  right: -11px;
+  top: calc(50% - 10px);
+  width: 1px;
+  background: var(--placeholder);
+}
+
+ul.list li.item .btn:last-child:after {
+  display: none;
+}
+
+ul.list li.item .btn svg .fill {
+  fill: var(--btnColor);
+  transition: fill .2s ease;
+}
+
+ul.list li.item .btn:hover svg .fill {
+  fill: var(--btnHover);
+}
+
+ul.list li.item.completed .complete-btn svg .fill {
+  fill: #00bd2b;
+}
+
+ul.list li.item .save-btn {
+  padding: 2px;
+  border: 1px solid var(--btnColor);
+  border-radius: 5px;
+  color: var(--btnColor);
+  line-height: 13px;
+  transition: all .2s ease;
+}
+
+ul.list li.item .save-btn:hover {
+  border: 1px solid var(--btnHover);
+  color: var(--btnHover);
+}
+
+ul.list li.item .remove-btn:hover svg .fill {
+ fill: #bd2130;
+}
