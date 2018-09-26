@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import "animation.css";
 
 body, input, button {
   font-family: 'Roboto', sans-serif;
@@ -94,7 +94,8 @@ header form .input-wrapper .input-field {
   -moz-user-select: none;
 }
 
-header form .input-wrapper .border {
+header form .input-wrapper .border,
+ul.list li.item .item-text:after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -105,7 +106,8 @@ header form .input-wrapper .border {
   transition: all 0.2s ease;
 }
 
-header form .input-wrapper .input-field:focus + .border {
+header form .input-wrapper .input-field:focus + .border,
+ul.list li.item .item-text.changeable:after {
   visibility: visible;
   width: 100%;
   left: 0;
@@ -145,29 +147,38 @@ ul.list {
 }
 
 ul.list li.item {
+  --x: 0;
+  --y: 0;
+  --scale: 0;
   display: flex;
+  position: relative;
   align-items: center;
   padding: 10px;
   min-height: 40px;
   background-color: white;
   list-style: none;
   border-bottom: 1px solid var(--btnColor);
+  overflow: hidden;
   transition: all .2s ease;
-}
-
-ul.list li.item.completed {
-  background-color: #efefef;
 }
 
 ul.list li.item:hover {
   background-color: #fdf8f8;
 }
 
+ul.list li.item.completed {
+  background-color: #efefef;
+}
+
 ul.list li.item .item-text {
+  position: relative;
   flex-grow: 1;
   margin-right: 10px;
+  max-height: 100px;
+  overflow: auto;
   letter-spacing: 0.5px;
   font-weight: 500;
+  outline: none;
 }
 
 ul.list li.item.completed .item-text {
@@ -175,6 +186,12 @@ ul.list li.item.completed .item-text {
   color: #949494;
   font-weight: 400;
 }
+
+ul.list li.item .item-text:after {
+  content: '';
+  background-color: var(--btnHover);
+}
+
 
 ul.list li.item svg {
   width: 20px;
@@ -219,20 +236,23 @@ ul.list li.item.completed .complete-btn svg .fill {
   fill: #00bd2b;
 }
 
-ul.list li.item .save-btn {
-  padding: 2px;
-  border: 1px solid var(--btnColor);
-  border-radius: 5px;
-  color: var(--btnColor);
-  line-height: 13px;
-  transition: all .2s ease;
-}
-
-ul.list li.item .save-btn:hover {
-  border: 1px solid var(--btnHover);
-  color: var(--btnHover);
-}
-
 ul.list li.item .remove-btn:hover svg .fill {
  fill: #bd2130;
+}
+
+li.item .pulse {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  transform: translate3d(var(--x), var(--y), 0) scale(var(--scale));
+}
+
+
+pre{
+  white-space: pre-wrap;
+  background: #EEE;
 }

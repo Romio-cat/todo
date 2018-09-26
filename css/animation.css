@@ -1,0 +1,12 @@
+@keyframes hint-anim-hide {
+  0% {
+    display: block;
+    top: 0;
+  }
+  99% {
+    top: -50px;
+  }
+  100% {
+    display: none;
+  }
+}
